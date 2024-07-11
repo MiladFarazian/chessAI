@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#board {
+    margin-bottom: 20px;
+}
+
+button, select {
+    margin: 5px;
+}
+
+#white-captured, #black-captured {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#white-captured img, #black-captured img {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+}

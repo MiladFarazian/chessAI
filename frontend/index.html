@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="board" style="width: 400px; margin-bottom: 20px;"></div>
+    <button id="startButton">Start Game</button>
+    <select id="color">
+        <option value="white">White</option>
+        <option value="black">Black</option>
+    </select>
+    <select id="difficulty">
+        <option value="1">Easy</option>
+        <option value="2">Medium</option>
+        <option value="3">Hard</option>
+    </select>
+
+    <div>
+        <h2>White Captured Pieces: <span id="white-score">0</span></h2>
+        <div id="white-captured"></div>
+    </div>
+    <div>
+        <h2>Black Captured Pieces: <span id="black-score">0</span></h2>
+        <div id="black-captured"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
