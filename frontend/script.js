@@ -80,7 +80,8 @@ function makeBestMove() {
         body: JSON.stringify({ board_fen: board_fen, level: level }),
     })
     .then(response => {
-        console.log("Fetch response:", response);  // Log the fetch response
+        console.log("Fetch response status:", response.status);  // Log status
+        console.log("Fetch response headers:", response.headers);  // Log headers
         return response.json();  // Parse the JSON from the response
     })
     .then(data => {
@@ -91,10 +92,14 @@ function makeBestMove() {
         }
         console.log("AI move received:", data.move);  // Debug AI move
         var move = game.move(data.move);
+        if (move === null) {
+            console.error("Invalid move received from server:", data.move);
+            return;
+        }
         console.log("Move applied to game:", move);  // Debug move application
         updateBoard();
 
-        if (move && move.captured) {
+        if (move.captured) {
             if (move.color === 'w') {
                 capturedPieces.black.push(move.captured);
             } else {
@@ -105,6 +110,9 @@ function makeBestMove() {
     })
     .catch((error) => {
         console.error('Fetch error:', error);
+    })
+    .finally(() => {
+        console.log("Fetch request completed");  // Log completion of the fetch request
     });
 }
 

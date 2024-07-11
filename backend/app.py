@@ -18,14 +18,17 @@ def move():
     level = data.get('level')
     move = chess_engine.get_ai_move(board_fen, level)
     print("Calculated move:", move)  # Debug calculated move
-    if move is None:
-        return jsonify({'error': 'No valid move found'}), 400
-    return jsonify({'move': move})
+
+    response = jsonify({'move': move})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/shutdown', methods=['POST'])
 def shutdown():
     chess_engine.close()
-    return 'Engine shut down', 200
+    response = jsonify({'message': 'Engine shut down'})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
