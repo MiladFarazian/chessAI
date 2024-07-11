@@ -91,8 +91,17 @@ function makeBestMove() {
             return;
         }
         console.log("AI move received:", data.move);  // Debug AI move
-        var move = game.move(data.move);
-        console.log("Attempting to apply move:", data.move);  // Log attempted move
+
+        // Convert move from 'e4e5' to { from: 'e4', to: 'e5' }
+        var from = data.move.substring(0, 2);
+        var to = data.move.substring(2, 4);
+        var moveObj = { from: from, to: to };
+        
+        // Log the current game state before applying the move
+        console.log("Current FEN before move:", game.fen());
+
+        var move = game.move(moveObj);
+        console.log("Attempting to apply move:", moveObj, "Result:", move);  // Log attempted move and result
         if (move === null) {
             console.error("Invalid move received from server:", data.move);
             return;
