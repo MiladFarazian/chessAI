@@ -92,6 +92,7 @@ function makeBestMove() {
         }
         console.log("AI move received:", data.move);  // Debug AI move
         var move = game.move(data.move);
+        console.log("Attempting to apply move:", data.move);  // Log attempted move
         if (move === null) {
             console.error("Invalid move received from server:", data.move);
             return;
