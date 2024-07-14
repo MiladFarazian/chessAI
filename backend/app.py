@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Path to the Stockfish engine executable
-engine_path = os.path.join("..", "stockfish_2", "stockfish")
+engine_path = os.path.join("..", "stockfish", "stockfish")
 chess_engine = ChessEngine(engine_path)
 
 @app.route('/move', methods=['POST'])
